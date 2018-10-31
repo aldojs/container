@@ -33,10 +33,21 @@ export class Container {
   }
 
   /**
-   * Invoke the factory and return its value
+   * Bind a singleton factory
+   * 
+   * @param name The bind name
+   * @param fn The factory function
+   * @public
+   */
+  public singleton (name: string, fn: Factory) {
+    return this.bind(name, _memoize(fn))
+  }
+
+  /**
+   * Invoke the factory and return the instance
    * 
    * @param name 
-   * @param ctx 
+   * @param args Optional arguments
    * @public
    */
   public make (name: string, ...args: any[]): any {
@@ -53,5 +64,19 @@ export class Container {
    */
   public bound (name: string): boolean {
     return this._factories.has(name)
+  }
+}
+
+/**
+ * Create a memoized version of a factory
+ * 
+ * @param fn factory function
+ * @private
+ */
+function _memoize (fn: Factory): Factory {
+  let value: any
+
+  return (container, ...args) => {
+    return value || (value = fn(container, ...args))
   }
 }

@@ -24,7 +24,7 @@ describe('unit test the container', () => {
       let container = createContainer()
 
       container.bind('foo', (c) => {
-        assert.deepEqual(container, c)
+        assert.strictEqual(container, c)
         return true
       })
 
@@ -49,6 +49,16 @@ describe('unit test the container', () => {
       container.bind('foo', () => ({ bar: true }))
 
       assert.deepEqual(container.make('foo'), { bar: true })
+    })
+  })
+
+  describe('container.singleton(name, fn)', () => {
+    it('should bind a memoized version of the factory', () => {
+      let container = createContainer()
+
+      container.singleton('foo', () => ({ foo: true }))
+
+      assert.strictEqual(container.make('foo'), container.make('foo'))
     })
   })
 })
