@@ -17,6 +17,34 @@ describe('unit test the container', () => {
       assert(container.bound('foo'))
       assert.equal(map.size, 1)
     })
+
+    it('should fail if `fn` is not a function', () => {
+      let container = createContainer()
+
+      assert.throws(() => {
+        container.bind('foo', 123 as any)
+      })
+
+      assert.throws(() => {
+        container.bind('foo', 'str' as any)
+      })
+
+      assert.throws(() => {
+        container.bind('foo', {} as any)
+      })
+
+      assert.throws(() => {
+        container.bind('foo', [] as any)
+      })
+
+      assert.throws(() => {
+        container.bind('foo', false as any)
+      })
+
+      assert.throws(() => {
+        container.bind('foo', null as any)
+      })
+    })
   })
 
   describe('container.make(name, ...args)', () => {
@@ -59,6 +87,34 @@ describe('unit test the container', () => {
       container.singleton('foo', () => ({ foo: true }))
 
       assert.strictEqual(container.make('foo'), container.make('foo'))
+    })
+
+    it('should fail if `fn` is not a function', () => {
+      let container = createContainer()
+
+      assert.throws(() => {
+        container.singleton('foo', 123 as any)
+      })
+
+      assert.throws(() => {
+        container.singleton('foo', 'str' as any)
+      })
+
+      assert.throws(() => {
+        container.singleton('foo', {} as any)
+      })
+
+      assert.throws(() => {
+        container.singleton('foo', [] as any)
+      })
+
+      assert.throws(() => {
+        container.singleton('foo', false as any)
+      })
+
+      assert.throws(() => {
+        container.singleton('foo', null as any)
+      })
     })
   })
 })

@@ -21,25 +21,35 @@ export class Container {
   }
 
   /**
-   * Add a service factory
+   * Add a service factory.
    * 
-   * @param name The service name
-   * @param fn The service factory
+   * @param name The service name.
+   * @param fn The service factory.
+   * @throws `TypeError` if the factory is not a function.
    * @public
    */
   public bind (name: string, fn: Factory): this {
+    if (typeof fn !== 'function') {
+      throw new TypeError(`Expect a function but got: ${typeof fn}`)
+    }
+
     this._factories.set(name, fn)
     return this
   }
 
   /**
-   * Bind a singleton factory
+   * Bind a singleton factory.
    * 
-   * @param name The bind name
-   * @param fn The factory function
+   * @param name The bind name.
+   * @param fn The factory function.
+   * @throws `TypeError` if the factory is not a function.
    * @public
    */
   public singleton (name: string, fn: Factory) {
+    if (typeof fn !== 'function') {
+      throw new TypeError(`Expect a function but got: ${typeof fn}`)
+    }
+
     return this.bind(name, _memoize(fn))
   }
 
