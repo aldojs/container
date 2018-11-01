@@ -1,6 +1,6 @@
 {
   "name": "@aldojs/container",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Dependency container",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
@@ -17,8 +17,9 @@
     "lib"
   ],
   "keywords": [
-    "dependency",
-    "container"
+    "service",
+    "container",
+    "dependency"
   ],
   "author": "absolux",
   "license": "MIT",
