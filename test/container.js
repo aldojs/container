@@ -1,9 +1,9 @@
 
-import 'mocha'
-import assert from 'assert'
-import { createContainer } from '../src/factory'
+const assert = require('assert')
+const { createContainer } = require('../lib')
 
 const NOOP = () => {}
+
 
 describe('unit test the container', () => {
   describe('container.bind(name, fn)', () => {
@@ -22,27 +22,27 @@ describe('unit test the container', () => {
       let container = createContainer()
 
       assert.throws(() => {
-        container.bind('foo', 123 as any)
+        container.bind('foo', 123)
       })
 
       assert.throws(() => {
-        container.bind('foo', 'str' as any)
+        container.bind('foo', 'str')
       })
 
       assert.throws(() => {
-        container.bind('foo', {} as any)
+        container.bind('foo', {})
       })
 
       assert.throws(() => {
-        container.bind('foo', [] as any)
+        container.bind('foo', [])
       })
 
       assert.throws(() => {
-        container.bind('foo', false as any)
+        container.bind('foo', false)
       })
 
       assert.throws(() => {
-        container.bind('foo', null as any)
+        container.bind('foo', null)
       })
     })
   })
@@ -93,27 +93,27 @@ describe('unit test the container', () => {
       let container = createContainer()
 
       assert.throws(() => {
-        container.singleton('foo', 123 as any)
+        container.singleton('foo', 123)
       })
 
       assert.throws(() => {
-        container.singleton('foo', 'str' as any)
+        container.singleton('foo', 'str')
       })
 
       assert.throws(() => {
-        container.singleton('foo', {} as any)
+        container.singleton('foo', {})
       })
 
       assert.throws(() => {
-        container.singleton('foo', [] as any)
+        container.singleton('foo', [])
       })
 
       assert.throws(() => {
-        container.singleton('foo', false as any)
+        container.singleton('foo', false)
       })
 
       assert.throws(() => {
-        container.singleton('foo', null as any)
+        container.singleton('foo', null)
       })
     })
   })
