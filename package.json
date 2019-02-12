@@ -1,13 +1,11 @@
 {
   "name": "@aldojs/container",
-  "version": "1.1.0",
-  "description": "Dependency container",
+  "version": "1.2.0",
+  "description": "Dead simple dependency container",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "tsc && npm test",
-    "test": "mocha -r ts-node/register \"test/**/*.ts\""
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -28,10 +26,6 @@
   },
   "homepage": "https://github.com/aldojs/container#readme",
   "devDependencies": {
-    "@types/mocha": "^2.2.48",
-    "@types/node": "^8.10.36",
-    "mocha": "^5.2.0",
-    "ts-node": "^5.0.1",
-    "typescript": "^3.1.5"
+    "mocha": "^5.2.0"
   }
 }
